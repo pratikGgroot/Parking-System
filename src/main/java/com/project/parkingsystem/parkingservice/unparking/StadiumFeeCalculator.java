@@ -14,7 +14,7 @@ class StadiumFeeCalculator implements FeeCalculator {
         double duration = hours;
 
         for (FeeModel feeModel : feeModels) {
-            if (feeModel.getStart() <= hours) {
+            if (feeModel.getStart() < hours) {
                 totalFee += feeModel.getBaseFee();
                 if (feeModel.getEnd() != null) {
                     if (feeModel.getEnd() <= hours) {

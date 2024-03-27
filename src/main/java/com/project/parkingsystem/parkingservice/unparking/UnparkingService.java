@@ -17,23 +17,27 @@ import java.util.Optional;
 @Service
 public class UnparkingService {
 
-    @Autowired
-    private ParkingTicketRepository parkingTicketRepository;
+    private final ParkingTicketRepository parkingTicketRepository;
+    private final FeeModelRepository feeModelRepository;
+    private final ParkingSpotRepository parkingSpotRepository;
+    private final MallFeeCalculator mallFeeCalculator;
+    private final StadiumFeeCalculator stadiumFeeCalculator;
+    private final AirportFeeCalculator airportFeeCalculator;
 
     @Autowired
-    private FeeModelRepository feeModelRepository;
-
-    @Autowired
-    private ParkingSpotRepository parkingSpotRepository;
-
-    @Autowired
-    private MallFeeCalculator mallFeeCalculator;
-
-    @Autowired
-    private StadiumFeeCalculator stadiumFeeCalculator;
-
-    @Autowired
-    private AirportFeeCalculator airportFeeCalculator;
+    public UnparkingService(ParkingTicketRepository parkingTicketRepository,
+                            FeeModelRepository feeModelRepository,
+                            ParkingSpotRepository parkingSpotRepository,
+                            MallFeeCalculator mallFeeCalculator,
+                            StadiumFeeCalculator stadiumFeeCalculator,
+                            AirportFeeCalculator airportFeeCalculator) {
+        this.parkingTicketRepository = parkingTicketRepository;
+        this.feeModelRepository = feeModelRepository;
+        this.parkingSpotRepository = parkingSpotRepository;
+        this.mallFeeCalculator = mallFeeCalculator;
+        this.stadiumFeeCalculator = stadiumFeeCalculator;
+        this.airportFeeCalculator = airportFeeCalculator;
+    }
 
     public UnparkingResponse unparkVehicle(UnparkingRequest request) {
         Optional<ParkingTicket> optionalParkingTicket = parkingTicketRepository.findById( request.getTicketId() );
@@ -46,6 +50,10 @@ public class UnparkingService {
         LocalDateTime exitTime = LocalDateTime.now();
 
         Duration duration = Duration.between( entryTime, exitTime );
+
+        if(duration.toMinutesPart()>0){
+            duration = duration.plusHours( 1 );
+        }
 
         long hours = (long) Math.ceil( duration.toHours() );
 

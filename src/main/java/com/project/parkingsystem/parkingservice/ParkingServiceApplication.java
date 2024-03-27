@@ -9,7 +9,7 @@ public class ParkingServiceApplication {
     public static void main(String[] args) {
 
         SpringApplication.run( ParkingServiceApplication.class, args );
-        System.out.println( "Initializing Parking Protocol.." );
+        System.out.println( "Initializing Parking Protocol..." );
 
     }
 

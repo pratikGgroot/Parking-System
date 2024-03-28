@@ -7,7 +7,6 @@ import java.util.List;
 public class MallFeeCalculator implements FeeCalculator {
     public double calculateFee(Long hours, List<FeeModel> feeModels) {
         double totalFee = 0;
-        //double totalHours = Math.ceil(hours);
         double duration = hours;
 
         for (FeeModel feeModel : feeModels) {

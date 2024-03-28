@@ -1,0 +1,18 @@
+create table Vehile_type
+(
+id int primary key,
+name varchar(20),
+created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+last_updated_at timestamp DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+);
+
+insert into Vehile_type(id,name,created_at,last_updated_at) values (1,'motorcycle',CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP);
+insert into Vehile_type(id,name,created_at,last_updated_at) values (2,'car',CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP);
+insert into Vehile_type(id,name,created_at,last_updated_at) values (3,'bus',CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP);
+ 
+UPDATE Vehile_type SET last_updated_at = CURRENT_TIMESTAMP WHERE id = 3;
+
+select * from Vehile_type;

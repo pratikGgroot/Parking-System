@@ -1,0 +1,18 @@
+create table Parking_entity
+(
+id int primary key,
+name varchar(20),
+created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+last_updated_at timestamp DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+);
+
+insert into Parking_entity(id,name,created_at,last_updated_at) values (1,'mall',CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP);
+insert into Parking_entity(id,name,created_at,last_updated_at) values (2,'stadium',CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP);
+insert into Parking_entity(id,name,created_at,last_updated_at) values (3,'airport',CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP);
+
+UPDATE entity_type SET last_updated_at = CURRENT_TIMESTAMP WHERE id = 3;
+
+select * from Parking_entity;

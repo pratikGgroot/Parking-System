@@ -1,0 +1,16 @@
+create table Parking_lot(
+id bigint,
+name varchar,
+parking_entity_id bigint,
+created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+last_updated_at timestamp DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+Primary key (id),
+Foreign key (parking_entity_id) references Parking_entity(id)
+);
+
+insert into Parking_lot(id,name,parking_entity_id,created_at,last_updated_at) values (101,'mallA',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+insert into Parking_lot(id,name,parking_entity_id,created_at,last_updated_at) values (102,'mallB',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+insert into Parking_lot(id,name,parking_entity_id,created_at,last_updated_at) values (103,'mallC',1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+insert into Parking_lot(id,name,parking_entity_id,created_at,last_updated_at) values (201,'stadiumA',2,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+insert into Parking_lot(id,name,parking_entity_id,created_at,last_updated_at) values (202,'stadiumB',2,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+insert into Parking_lot(id,name,parking_entity_id,created_at,last_updated_at) values (301,'airportA',3,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);

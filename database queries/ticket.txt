@@ -1,0 +1,11 @@
+create table Parking_ticket(
+id bignint,
+parking_spot_id bigint,
+entry_time DEFAULT CURRENT_TIMESTAMP,
+exit_time DEFAULT CURRENT_TIMESTAMP,
+amount decimal,
+created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+last_updated_at timestamp DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+Primary key (id),
+Foreign key (parking_spot_id) references Parking_spot(id)
+);

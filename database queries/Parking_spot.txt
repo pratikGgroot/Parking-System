@@ -1,0 +1,13 @@
+create table Parking_spot(
+id bigint primary key not null,
+is_occupied boolean,
+created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+last_updated_at timestamp DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
+);
+select * from Parking_spot;
+desc Parking_spot;
+alter table Parking_spot add column parking_lot_id bigint, ADD COLUMN vehicle_id INT;
+alter table Parking_spot modify parking_lot_id bigint after id;
+alter table Parking_spot modify vehicle_id int after parking_lot_id;
+alter table Parking_spot add constraint foreign key (parking_lot_id) references Parking_lot(id);
+alter table Parking_spot add constraint foreign key (vehicle_id) references Vehicle_type(id);

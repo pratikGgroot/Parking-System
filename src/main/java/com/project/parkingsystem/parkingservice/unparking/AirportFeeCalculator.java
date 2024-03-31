@@ -19,8 +19,11 @@ public class AirportFeeCalculator implements FeeCalculator {
                         duration -= intervalDifference;
                     }
                 }
+                else{
+                    totalFee += feeModel.getHourlyRate();
+                }
             }
-            totalFee += Math.ceil( duration / 24 ) * feeModel.getHourlyRate();
+            totalFee += Math.floor( duration / 24 ) * feeModel.getHourlyRate();
         }
 
         return totalFee;

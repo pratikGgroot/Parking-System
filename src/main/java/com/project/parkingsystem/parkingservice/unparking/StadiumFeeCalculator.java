@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StadiumFeeCalculator implements FeeCalculator {
+public
+class StadiumFeeCalculator implements FeeCalculator {
 
     @Override
     public double calculateFee(Long hours, List<FeeModel> feeModels) {
@@ -21,8 +22,8 @@ public class StadiumFeeCalculator implements FeeCalculator {
                         duration -= intervalDifference;
                     }
                 }
+                totalFee += duration * feeModel.getHourlyRate();
             }
-            totalFee += duration * feeModel.getHourlyRate();
         }
         return totalFee;
     }
